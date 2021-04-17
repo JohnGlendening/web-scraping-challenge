@@ -18,22 +18,22 @@ def scrape():
     time.sleep(.1)
 
     # Beautiful Soup
-    nasa_html = browser.html
-    soup = bs(nasa_html, "html.parser")
+    html = browser.html
+    soup = bs(html, "html.parser")
 
     # Find title and paragraph
-    nasa_headline = soup.find('div', class_='content_title').get_text()
-    nasa_teaser = soup.find('div', class_='article_teaser_body').get_text()
+    headline = soup.find('div', class_='content_title').get_text()
+    teaser = soup.find('div', class_='article_teaser_body').get_text()
 
     # JPL Mars Space Images
     url = 'https://spaceimages-mars.com/'
-    browser.visit(jpl_url)
+    browser.visit(url)
     time.sleep(.1)
     browser.click_link_by_partial_text('FULL IMAGE')
     soup = bs(browser.html, 'html.parser')
 
     image_src = soup.find_all('img')[1]["src"]
-    featured_image_url = jpl_url + image_src
+    featured_image_url = url + image_src
 
     # Mars Facts
     mars_facts_url = 'https://galaxyfacts-mars.com/'
@@ -75,8 +75,8 @@ def scrape():
     hemisphere_image_urls
 
     data_scrape = {}
-    data_scrape['title'] = title
-    data_scrape['paragraph'] = paragraph
+    data_scrape['headline'] = headline
+    data_scrape['teaser'] = teaser
     data_scrape['featured_image_url'] = featured_image_url
     data_scrape['mars_facts_html'] = mars_facts_html
     data_scrape['hemisphere_image_urls'] = hemisphere_image_urls
