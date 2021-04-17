@@ -39,7 +39,7 @@ def scrape():
     mars_facts_url = 'https://galaxyfacts-mars.com/'
     browser.visit(mars_facts_url)
     time.sleep(.1)
-    mars_facts_soup = bs(browser.html, 'html.parser')
+    soup = bs(browser.html, 'html.parser')
 
     mars_df = pd.read_html(browser.html)[1]
     mars_facts_html = mars_df.to_html()
