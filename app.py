@@ -1,6 +1,6 @@
 import scrape_mars
 from pymongo import MongoClient
-rom flask import Flask, redirect, render_template
+from flask import Flask, redirect, render_template
 
 app = Flask(__name__)
 
