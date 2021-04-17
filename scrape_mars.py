@@ -22,8 +22,8 @@ def scrape():
     soup = bs(html, "html.parser")
 
     # Find title and paragraph
-    headline = soup.find('div', class_='content_title').get_text()
-    teaser = soup.find('div', class_='article_teaser_body').get_text()
+    title = soup.find('div', class_='content_title').get_text()
+    paragraph = soup.find('div', class_='article_teaser_body').get_text()
 
     # JPL Mars Space Images
     url = 'https://spaceimages-mars.com/'
@@ -75,8 +75,8 @@ def scrape():
     hemisphere_image_urls
 
     data_scrape = {}
-    data_scrape['headline'] = headline
-    data_scrape['teaser'] = teaser
+    data_scrape['title'] = title
+    data_scrape['paragraph'] = paragraph
     data_scrape['featured_image_url'] = featured_image_url
     data_scrape['mars_facts_html'] = mars_facts_html
     data_scrape['hemisphere_image_urls'] = hemisphere_image_urls
